@@ -1,3 +1,4 @@
+@charset "utf-8";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,3 +7,19 @@
 .login{
     font-family: 'Roboto Serif', serif;
 }
+
+.input-icon {
+    position: relative;
+  }
+  
+  .input-icon input {
+    padding-left: 30px; /* Adjust the padding to make room for the icon */
+  }
+  
+  .input-icon i {
+    position: absolute;
+    left: 10px; /* Adjust the left position to align the icon as desired */
+    transform: translateY(-50%);
+    margin-bottom: 8px;
+}
+  
