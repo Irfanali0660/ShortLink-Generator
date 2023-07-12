@@ -1,9 +1,9 @@
-<nav class="bg-white  z-10 fixed top-0 w-full">
+<nav class="bg-gray-50  z-20 fixed top-0 w-full">
     <div class=" px-2 sm:px-6 lg:px-8">
       <div class="relative flex h-16 items-center justify-between">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
           <!-- Mobile menu button-->
-          <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-black hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-black" aria-controls="mobile-menu" aria-expanded="false">
+          <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-black hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-black" aria-controls="mobile-menu" aria-expanded="false">
             <span class="sr-only">Open main menu</span>
             <!--
               Icon when menu is closed.
@@ -76,7 +76,7 @@
     </div>
   
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="sm:hidden" id="mobile-menu">
+    <div class="hidden" id="mobile-menu">
       <div class="space-y-1 px-2 pb-3 pt-2">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
         <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
@@ -86,8 +86,48 @@
       </div>
     </div>
   </nav>
+  <!-- <div class="h-full bg-green-200 origin-bottom -rotate-6 z-0">
+   
+  </div>
+
+  <div class="h-5/6 bg-red-200 z-10" style="position: relative;">
+
+  </div> -->
 
 
-<div class="square1  h-full bg-green-200 origin-bottom -rotate-6" style=""> 
+  <div class="relative h-4/5 sm:w-full">
+    <div class="absolute inset-0 bg-green-200 origin-bottom -rotate-6 z-0">
 
+    </div>
+    <div class="absolute w-full top-0 left-0 right-0 bottom-20 bg-green-200 z-10 flex items-center justify-around">
+       <div>
+        <h2 class="text-3xl italic font-semibold mb-5">URL Shortener</h2>
+        <h2 class="text-4xl text-gray-600 mb-5 uppercase font-semibold">Here you have full control<br>over your links</h2>
+        <p class="text-black text-xl font-bold">URL Shortener, Link Analytics,<br>
+          QR Codes Generator and Link in bio Platform.<br>
+          Shorten, brand, manage, track and share your links the easy way.</p>
+        <button type="button" class="px-4 py-2 bg-green-300  hover:bg-green-400 mt-5 font-bold border rounded">Expolore <span class="ps-2"><i class="fas fa-arrow-right"></i></span></button>
+       </div>
+       <div> 
+        <img class="w-auto lg:block transform lg:h-40 hidden md:block" [src]="Qrcode" alt="Qr code">
+       </div>
+    </div>
+  </div>  
+
+<div>
+  <div class="flex justify-center mt-16">
+    <form (ngSubmit)="submiturl()" [formGroup]="converturl" class="flex flex-row w-1/2 h-10 border rounded-md">
+      <input type="text" formControlName="shortUrl" class="min-w-full border-green-300 border-2 focus:border-green-700 p-4" placeholder=" Paste long url and shorten it">
+      <button class="submit bg-green-300 px-10 text-black font-semibold border rounded-sm" type="submit">Shorten</button>
+    </form>
+  </div>
+  <div class="flex justify-center">
+    <p *ngIf="urldetails" class="border-3 border-green-500 text-xl p-5">
+      {{'http://localhost:4200/'+urldetails.shortUrl}}
+    </p>
+  </div>
 </div>
+
+  
+
+ 
