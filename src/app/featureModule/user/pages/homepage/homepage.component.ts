@@ -51,7 +51,7 @@ export class HomepageComponent {
   hostname=environment.frontHost
 
   copyText() {
-    this.clipboard.copy(this.hostname+'/'+this.urldetails.shortUrl);
+    this.clipboard.copy(this.hostname+this.urldetails.shortUrl);
     // You can also use the clipboard's `copy` method with additional optional parameters.
     // For example: this.clipboard.copy(this.textToCopy, 'Label');
   }

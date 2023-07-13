@@ -1,4 +1,4 @@
 export const environment = {
-    localhost: 'http://localhost:3000',
-    frontHost:'http://localhost:4200'
+    localhost: 'https://shortGenbackend.irfanali.club',
+    frontHost:'https://shortGen.irfanali.club/'
 };
