@@ -12,13 +12,16 @@ export class ShortUrlComponent {
 constructor(private route: ActivatedRoute,private service:UserService,private router: Router){}
 
 shortUrlId!: string | null;
+loading!:boolean
 ngOnInit() {
   this.shortUrlId = this.route.snapshot.paramMap.get('id');
   // Handle the rendering or redirection logic based on the short URL ID
+  this.loading=true
   this.service.shorturlcheck(this.shortUrlId).subscribe((urldetails)=>{
     console.log(urldetails[0].orginalUrl,"URL DETAILS");
     
     // window.open(urldetails[0].orginalUrl);
+    this.loading=false
     window.location.href=urldetails[0].orginalUrl
   })
 }

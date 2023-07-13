@@ -27,6 +27,7 @@
           <div class="flex flex-shrink-0 items-center">
             <img class="block h-8 w-auto lg:hidden transform " [src]="imageUrl" alt="Your Company">
             <img class="hidden h-8 w-auto lg:block transform " [src]="imageUrl" alt="Your Company">
+            <h1 class="heading w-auto ps-2 font-bold text-lg">ShortGen</h1>
           </div>
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
@@ -115,19 +116,119 @@
   </div>  
 
 <div>
-  <div class="flex justify-center mt-16">
-    <form (ngSubmit)="submiturl()" [formGroup]="converturl" class="flex flex-row w-1/2 h-10 border rounded-md">
-      <input type="text" formControlName="shortUrl" class="min-w-full border-green-300 border-2 focus:border-green-700 p-4" placeholder=" Paste long url and shorten it">
-      <button class="submit bg-green-300 px-10 text-black font-semibold border rounded-sm" type="submit">Shorten</button>
+  <div class="flex justify-center mt-20">
+    <form (ngSubmit)="submiturl()" [formGroup]="converturl" class="flex flex-row w-1/2 ">
+      <input type="text" formControlName="shortUrl" class="min-w-full border-green-300 border-2  h-14 rounded-l-lg focus:border-green-700 p-4" placeholder=" Paste long url and shorten it">
+      <button class="submit bg-green-300 px-10 text-black font-semibold border rounded-r-lg  h-14" type="submit"><span *ngIf="loading">
+        <svg aria-hidden="true" role="status" class="inline mr-3 w-4 h-4 text-black animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="#E5E7EB"></path>
+                                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentColor"></path>
+                                    </svg>
+                                    </span><span *ngIf="!loading">Shorten</span>
+      </button>
     </form>
   </div>
-  <div class="flex justify-center">
-    <p *ngIf="urldetails" class="border-3 border-green-500 text-xl p-5">
-      {{'http://localhost:4200/'+urldetails.shortUrl}}
+  
+</div>
+
+<div   *ngIf="urldetails" class="flex justify-center mt-3">
+  <div  class="flex md:w-2/5 ">
+    <p  class="min-w-full border-green-300 border-2 text-center p-3 h-8 rounded-l-lg">
+      {{hostname+'/'+urldetails.shortUrl}}
     </p>
+    <button (click)="copyText()" class=" bg-green-300 px-10 text-black font-semibold border rounded-r-lg h-8">Copy</button>
   </div>
 </div>
 
+<div class="mt-10 flex flex-col justify-center text-center">
+  <h1 class="text-green-400 text-center text-2xl mb-3">What is shortGen  <span class="font-bold text-red-700">?</span></h1>
+ <div class="flex justify-center">
+  <p class="text-center text-xl leading-loose lg:w-2/3">ShortGen is a all-in-one Link Management Platform for all your links and needs. It is an advanced URL 
+    Shortener with extensive Link Analytics. ShortGen offers solutions that will allow you to manage your 
+   links, thanks to which you can develop your business while having your links under control.
+    ShortGen is also a platform for creating your own Link in bio microsites and generating QR Codes,
+   so you can combine offline and online solutions.
+   </p>
+ </div>
+</div>
+
+<div class="lg:px-8 mt-5 mb-5">
+  <div class="flex justify-around flex-col md:flex-row">
+    <div class="md:w-1/5 border-4 border-green-100 rounded-lg p-2 py-3">
+      <div class="flex justify-center mb-3">
+        <div class="flex flex-col items-center">
+          <img [src]="linkimg" alt="" class="h-10 w-10 mb-3">
+          <h1 class="font-bold">URL Shortener</h1>
+        </div>
+      </div>
+      <div>
+          <p class="text-justify">
+            ShortGen is a URL Shortener with a lot offeatures that will help you handle all your links in an intuitive way and reveal the potential of your links.
+          </p>
+      </div>
+    </div>
+    <div class="md:w-1/5 border-4 border-green-100 rounded-lg p-2">
+      <div class="flex justify-center mb-3">
+        <div class="flex flex-col items-center">
+          <img [src]="linkimg" alt="" class="h-10 w-10 mb-3">
+          <h1 class="font-bold">URL Shortener</h1>
+        </div>
+      </div>
+      <div>
+          <p class="text-justify">
+            ShortGen is an advanced
+            Link Analytics platform 
+           that tracks clickson short
+            links and measures the 
+           effectiveness of clicks.</p>
+      </div>
+    </div><div class="md:w-1/5 border-4 border-green-100 rounded-lg p-2">
+      <div class="flex justify-center mb-3">
+        <div class="flex flex-col items-center">
+          <img [src]="linkimg" alt="" class="h-10 w-10 mb-3">
+          <h1 class="font-bold">URL Shortener</h1>
+        </div>
+      </div>
+      <div>
+          <p class="text-justify">
+            Generate QR codes and 
+            customize them according 
+            to your style and manage 
+            their redirection so that QR
+             codes reflectyour brand and
+             allow you to grow your 
+            business.          </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mb-5 md:ps-10 mt-6">
+<h1 class="mb-3">Marketing Reporting & Analytics</h1>
+<h1 class="text-lg font-bold mb-4">Understand what’s resonating with your audience</h1>
+<p>Capture data with every click; make smarter decisions about which content and platforms to focus your efforts and dollars on.</p>
+</div>
+
+<div class="container flex flex-col md:flex-row justify-center">
+  <div class="md:w-1/2 md:p-10 flex content-evenly">
+    <ul class="list-disc list-inside md:space-y-8">
+      <li>
+        Track organic shares across earned media, including links other Bitly users create that point to your content
+      </li>
+      <li>
+        Get insights down to the local city-level to see what content your audience is excited about
+      </li>
+      <li>
+        Export click data into other analytics for ad-hoc reporting and deeper analysis on your audiences and content
+      </li>
+    </ul>
+  </div>
+  <div class="md:w-1/2">
+    <img [src]="status" alt="" class="px-4">
+  </div>
+</div>
   
+
+
 
  
